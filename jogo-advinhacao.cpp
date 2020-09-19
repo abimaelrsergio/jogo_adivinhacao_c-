@@ -14,7 +14,8 @@ int main(int argc, char const *argv[])
     cin >> chute;
     cout << "O valor do seu chute é: " << chute << endl;
 
-    if (chute == numero_secreto)
+    bool acertou = chute == numero_secreto;
+    if (acertou)
     {
         cout << "Parabéns, você acertou o número secreto!" << endl;
     }
