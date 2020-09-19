@@ -1,4 +1,6 @@
 #include <iostream>
+#include <cstdlib>
+#include <ctime>
 using namespace std;
 
 int main(int argc, char const *argv[])
@@ -11,6 +13,8 @@ int main(int argc, char const *argv[])
     cout << "Fácil (F), Médio (M) ou Difícil (D): ";
     char dificuldade;
     cin >> dificuldade;
+
+    cout << "Adivinhe o número que estou pensando!" << endl;
 
     int numero_de_tentativas;
     if (dificuldade == 'F')
@@ -26,7 +30,11 @@ int main(int argc, char const *argv[])
         numero_de_tentativas = 5;
     }
 
-    const int NUMERO_SECRETO = 42;
+    // semente dos números aleatórios
+    // time(0) ou time(NULL) = consome os segundos desde janeiro de 1970, então está sempre mudando todas as vezes que roda
+    srand(time(NULL));
+    const int NUMERO_SECRETO = rand() % 100; // dividindo por 100 e pega o resto, para pegar números entre 0 e 99 como resultado.
+
     double pontos = 1000.0;
 
     bool nao_acertou = true;
@@ -35,7 +43,7 @@ int main(int argc, char const *argv[])
     for (tentativas = 1; tentativas <= numero_de_tentativas; tentativas++)
     {
         int chute;
-        cout << "Tentativas " << tentativas << endl;
+        cout << "Tentativa " << tentativas << " de " << numero_de_tentativas << "." << endl;
         cout << "Qual seu chute? ";
         cin >> chute;
 
