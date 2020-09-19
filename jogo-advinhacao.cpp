@@ -18,6 +18,12 @@ int main(int argc, char const *argv[])
     {
         cout << "Parabéns, você acertou o número secreto!" << endl;
     }
+    else if (chute > numero_secreto) {
+        cout << "O chute foi maior que o número secreto!" << endl;
+    }
+    else {
+        cout << "Seu chute foi menor que o número secreto!" << endl;
+    }
 
     return 0;
 }
