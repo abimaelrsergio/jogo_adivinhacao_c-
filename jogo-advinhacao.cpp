@@ -8,6 +8,7 @@ int main(int argc, char const *argv[])
     cout << "*****************************************" << endl;
 
     const int NUMERO_SECRETO = 42;
+    double pontos = 1000.0;
 
     bool nao_acertou = true;
     int tentativas = 0;
@@ -19,6 +20,10 @@ int main(int argc, char const *argv[])
         cout << "Tentativas " << tentativas << endl;
         cout << "Qual seu chute? ";
         cin >> chute;
+
+        double pontos_perdidos = abs(chute - NUMERO_SECRETO) / 2.0;
+        pontos -= pontos_perdidos;
+
         cout << "O valor do seu chute é: " << chute << endl;
 
         bool acertou = chute == NUMERO_SECRETO;
@@ -40,6 +45,7 @@ int main(int argc, char const *argv[])
         cout << "-----------------------------------------" << endl;
     }
     cout << "Você acertou o numero secreto em " << tentativas << " tentativas." << endl;
+    cout << "Você ganhou " << pontos << " pontos" << endl;
     cout << "Fim do jogo!" << endl;
 
     return 0;
