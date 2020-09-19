@@ -7,15 +7,33 @@ int main(int argc, char const *argv[])
     cout << "* Seja Bem vindo ao jogo da adivinhação *" << endl;
     cout << "*****************************************" << endl;
 
+    cout << "Escolha o seu nível de dificuldade: " << endl;
+    cout << "Fácil (F), Médio (M) ou Difícil (D): ";
+    char dificuldade;
+    cin >> dificuldade;
+
+    int numero_de_tentativas;
+    if (dificuldade == 'F')
+    {
+        numero_de_tentativas = 15;
+    }
+    else if (dificuldade == 'M')
+    {
+        numero_de_tentativas = 10;
+    }
+    else
+    {
+        numero_de_tentativas = 5;
+    }
+
     const int NUMERO_SECRETO = 42;
     double pontos = 1000.0;
 
     bool nao_acertou = true;
     int tentativas = 0;
 
-    while (nao_acertou)
+    for (tentativas = 1; tentativas <= numero_de_tentativas; tentativas++)
     {
-        tentativas++;
         int chute;
         cout << "Tentativas " << tentativas << endl;
         cout << "Qual seu chute? ";
@@ -33,6 +51,7 @@ int main(int argc, char const *argv[])
         {
             cout << "Parabéns, você acertou o número secreto!" << endl;
             nao_acertou = false;
+            break;
         }
         else if (maior)
         {
@@ -44,9 +63,18 @@ int main(int argc, char const *argv[])
         }
         cout << "-----------------------------------------" << endl;
     }
-    cout << "Você acertou o numero secreto em " << tentativas << " tentativas." << endl;
-    cout << "Você ganhou " << pontos << " pontos" << endl;
-    cout << "Fim do jogo!" << endl;
+    if (nao_acertou)
+    {
+        cout << "Você perdeu o jogo! Tente novamente." << endl;
+    }
+    else
+    {
+        cout << "Você acertou o numero secreto em " << tentativas << " tentativas." << endl;
+        cout.precision(2);
+        cout << fixed;
+        cout << "Você ganhou " << pontos << " pontos" << endl;
+        cout << "Fim do jogo!" << endl;
+    }
 
     return 0;
 }
